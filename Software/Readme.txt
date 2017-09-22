@@ -7,7 +7,7 @@ Ich stelle hier die Software für mein Projekt "Elektronische Zündung auf Ardui
 Eine Steuerscheibe auf der Nockenwelle (die Geometrie hängt von der Zündcharakteristik des Motorrades ab) wird so justiert, dass zu dem Zeitpunkt, wenn der erste Zylinder den UT (vor Beginn des Verdichtungstaktes) erreicht, ein Hallsensor ein Signal an Pin 2 des Arduino sendet (bzw. der PIn, der INTERUPT0 zugeordnet ist). Dieser löst dann die Interrupt-Prozedur aus (der Interrupt ist auf den Modus CHANGE in konfiguriert). Darin wird dann über einen "digitalRead" ermittelt, ob das Signal <> LOW ist (Steuerscheibe deckt Hallsensor ab), dann ist nachfolgend Zündspule1 zu behandeln, andernfalls (Steuerscheibe hat Hall-Sensor wieder frei gegebn) ist es Zündspule2.
 
 Für die Justierung der Steuerscheibe dienen zwei LEDs, die im Konfigurationsmodus aufleuchten, wenn die Steuerscheibe beginnt, den Hallsensor zu überdecken bzw. diesen wieder freizugeben. Der verwendete Hallsensor ist folgender: 
-http://www.hallsensors.de/CYHME1AV.pdf. Es kann aber auch ein anderer "Hall efect vane sensor" verwendet werden.
+http://www.hallsensors.de/CYHME1AV.pdf. Es kann aber auch ein anderer "Hall effect vane sensor" verwendet werden.
 
 Wenn die Interrup-Prozedur ausgeführt wird, wird ein Timer gestartet. Das "timerIntervall" ist dabei die Zeit, die bis zum Beginn der Ladezeit der Spule "gewartet" werden muss. Diese Zeit wird aus der aktuellen Umdrehungszeit der Nockenwelle berechnet (aus vorherigen Signalen des Hallsensors) und ist umso kürzer, je höher die Umdrehungszahl ist (bzw. je kleiner die Zeit für eine Umdrehung ist). 
 
